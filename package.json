@@ -9,6 +9,9 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "jquery": "^3.2.1",
+    "tether": "^1.4.0",
     "vue": "^2.4.4",
     "vue-router": "^3.0.1"
   },

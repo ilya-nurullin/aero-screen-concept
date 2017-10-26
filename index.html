@@ -4,12 +4,24 @@
     <meta charset="utf-8">
     <title>Концепт интерфейса</title>
     <link rel="stylesheet" type="text/css" href="fa/css/font-awesome.min.css">
+    <link rel="stylesheet" href="gallery/blueimp-gallery.min.css">
   </head>
   <body>
     <div id="app">
       <main-menu></main-menu>
       <router-view></router-view>
     </div>
-    <script src="/dist/build.js"></script>
+    <script src="dist/build.js"></script>
+    <script src="gallery/jquery.blueimp-gallery.min.js"></script>
+
+    <div id="blueimp-gallery" class="blueimp-gallery" data-toggle-controls-on-slide-click="true">
+      <div class="slides"></div>
+      <h3 class="title"></h3>
+      <a class="prev" style='color: #fff'>‹</a>
+      <a class="next" style='color: #fff'>›</a>
+      <a class="close" style='color: #fff'>×</a>
+      <a class="play-pause"></a>
+      <ol class="indicator"></ol>
+    </div>
   </body>
 </html>

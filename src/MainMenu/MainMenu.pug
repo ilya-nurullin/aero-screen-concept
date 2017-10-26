@@ -1,0 +1,95 @@
+nav.navbar.navbar-toggleable-md.navbar-light.bg-faded.navbar-inverse.bg-primary
+  button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  template(v-if="$route.name != 'auth'")
+    router-link.navbar-brand(to='/') Аэрофлот
+  template(v-else)
+    .navbar-brand Аэрофлот
+  #navbarNav.collapse.navbar-collapse
+    ul.navbar-nav
+      li.nav-item
+        li.nav-item(style="margin-top: 0.5rem")
+          current-time
+          br
+          span Осталось 8:48
+      template(v-if="$route.name != 'auth'")
+        li.nav-item
+          router-link.nav-link(:to="{ name: 'help' }") 
+            i.fa.fa-question.fa-3x
+            br
+            | Справка
+        li.nav-item
+          router-link.nav-link(:to="{ name: 'settings' }") 
+            i.fa.fa-cog.fa-3x
+            br
+            | Настройки
+
+        form.form-inline
+          audio(controls='controls')
+            source#audioSrc(src='assets/music/adagio.mp3', type='audio/mpeg')
+            | Your browser does not support the audio element. exclamation
+
+        ul.navbar-nav
+          li.nav-item
+            .nav-link(href='#', onclick="window.alert('Ожидайте бортпроводника')")
+              i.fa.fa-exclamation.fa-3x
+              br
+              | Бортпроводник
+
+          li.nav-item.dropdown
+            a#maps.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', :class="{ 'active': $route.name == 'map' || $route.name == 'map.photo' }")
+              i.fa.fa-map.fa-3x
+              br
+              | Карты
+            .dropdown-menu(aria-labelledby='maps', style="text-align: center")
+              router-link.dropdown-item(:to="{ name: 'map', params: {type: 'google'} }")
+                i.fa.fa-google.fa-3x
+                br
+                | Google Maps
+              .dropdown-divider
+              router-link.dropdown-item(:to="{ name: 'map', params: {type: '2gis'} }")
+                i.fa.fa-map-marker.fa-3x
+                br
+                | 2GIS
+              .dropdown-divider 
+              router-link.dropdown-item(:to="{ name: 'map.photo' }")
+                i.fa.fa-picture-o.fa-3x
+                br
+                | Фото
+          li.nav-item
+            router-link.nav-link(:to="{ name: 'flight' }") 
+              i.fa.fa-plane.fa-3x
+              br
+              | О полете
+
+          li.nav-item.dropdown
+            a#entertainment.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', :class="{ 'active': $jQuery.inArray($route.name, ['music', 'films', 'news', 'games']) >= 0  }")
+              i.fa.fa-gamepad.fa-3x
+              br
+              | Развлечения
+            .dropdown-menu(aria-labelledby='entertainment', style="text-align: center")
+              router-link.dropdown-item(:to="{ name: 'music' }")
+                i.fa.fa-music.fa-3x
+                br
+                | Музыка
+              .dropdown-divider
+              router-link.dropdown-item(:to="{ name: 'films' }")
+                i.fa.fa-film.fa-3x
+                br
+                | Фильмы
+              .dropdown-divider 
+              router-link.dropdown-item(:to="{ name: 'news' }")
+                i.fa.fa-newspaper-o.fa-3x
+                br
+                | Новости
+              .dropdown-divider 
+              router-link.dropdown-item(:to="{ name: 'games' }")
+                i.fa.fa-gamepad.fa-3x
+                br
+                | Игры
+          li.nav-item(v-if="$route.name != 'auth'")
+            a.nav-link(onclick="localStorage.removeItem('ticket'); router.push({ name: 'auth' })")
+              i.fa.fa-sign-out.fa-3x
+              br
+              | Выход
+
