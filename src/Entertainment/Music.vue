@@ -41,7 +41,7 @@
 
 </template>
 
-<style lang='scss'>
+<style lang='scss' scoped>
   .card {
     margin: 1rem;
   }

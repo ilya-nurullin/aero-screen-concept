@@ -16,6 +16,9 @@
   export default {
     mounted() {
       resizeIframe();
+      if (location.protocol == 'https:') {
+        $('iframe').attr('src', 'https://www.htmlgames.com');
+      }
     }
   }
 </script>

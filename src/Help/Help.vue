@@ -50,7 +50,7 @@
       p Чтобы выбрать вызвать бортпроводника, нажмите на кнопку Бортпроводник.
 </template>
 
-<style>
+<style scoped>
   .row {
     margin-top: 1rem;
     padding: 0 1rem;
@@ -76,8 +76,6 @@
     },
     computed: {
       title: function() {
-        console.log(this.currentId);
-        console.log($(`section#${this.currentId}`).data('title'));
         return $(`section#${this.currentId}`).data('title');
       },
       body: function() {
